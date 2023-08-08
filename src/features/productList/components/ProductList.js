@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, incrementAsync, selectCount } from "./ProductListSlice";
+import { increment, incrementAsync, selectCount } from "../ProductSlice";
 
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -13,6 +13,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -44,6 +45,24 @@ const products = [
   },
   {
     id: 4,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$35",
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$35",
+    color: "Black",
+  },
+  {
+    id: 6,
     name: "Basic Tee",
     href: "#",
     imageSrc: "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
@@ -179,7 +198,7 @@ export default function ProductList() {
                                           defaultValue={option.value}
                                           type="checkbox"
                                           defaultChecked={option.checked}
-                                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                          className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
                                         />
                                         <label
                                           htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -299,7 +318,7 @@ export default function ProductList() {
                                       defaultValue={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
-                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
                                     />
                                     <label
                                       htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -322,8 +341,9 @@ export default function ProductList() {
                     {/* This is Product List section */}
                     <div className="bg-white">
                       <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
-                        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                           {products.map((product) => (
+                            <Link to="/product-detail" >
                             <div key={product.id} className="group relative">
                               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                 <img
@@ -345,6 +365,7 @@ export default function ProductList() {
                                 <p className="text-sm font-medium text-gray-900">{product.price}</p>
                               </div>
                             </div>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -385,19 +406,26 @@ export default function ProductList() {
                         <span className="sr-only">Previous</span>
                         <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
                       </a>
-                      {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
+                      {/* Current: "z-10 bg-emerald-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
                       <a
                         href="#"
                         aria-current="page"
-                        className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="relative z-10 inline-flex items-center bg-emerald-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600"
                       >
                         1
                       </a>
+                      
                       <a
                         href="#"
                         className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                       >
                         2
+                      </a>
+                      <a
+                        href="#"
+                        className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                      >
+                        3
                       </a>
 
                       <a
