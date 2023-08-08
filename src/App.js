@@ -1,6 +1,4 @@
-import React from 'react';
-import { Counter } from './features/counter/Counter';
-import  ProductDetail from './features/productList/components/ProductDetail';
+import  ProductDetail from './features/product/components/ProductDetail';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
