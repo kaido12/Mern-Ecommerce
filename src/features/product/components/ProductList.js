@@ -242,9 +242,17 @@ export default function ProductList() {
   const [filter, setFilter] = useState({});
 
   const handleFilter = (e, section, option) => {
-    const newFilter = { ...filter, [section.id]: option.value };
+    // console.log(e.target.checked)
+    const newFilter = { ...filter };
+    // TODO : on server it will support multiple categories
+    if (e.target.checked) {
+      newFilter[section.id] = option.value;
+    } else {
+      delete newFilter[section.id];
+    }
+
     setFilter(newFilter);
-    dispatch(fetchProductsByFiltersAsync(newFilter));
+
     console.log(section.id, option.value);
   };
 
@@ -255,8 +263,8 @@ export default function ProductList() {
   };
 
   useEffect(() => {
-    dispatch(fetchAllProductsAsync());
-  }, [dispatch]);
+    dispatch(fetchProductsByFiltersAsync(filter));
+  }, [dispatch, filter]);
 
   return (
     <div>
